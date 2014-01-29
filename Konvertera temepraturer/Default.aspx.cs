@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Konvertera_temepraturer.Model;
 
 namespace Konvertera_temepraturer
 {
@@ -27,20 +28,38 @@ namespace Konvertera_temepraturer
                 //Temperaturstegningens värde
                 var increase = int.Parse(TempincreaseBox.Text);
 
-                var rowCnt = endTemp / increase;
-
+                //Tittar vilken av radioknapparna som är klickade
                 if (CelsiusRadioButton.Checked)
                 {
-                    
+                    firstHeaderCell.Text = "&deg;C";
+                    secondHeaderCell.Text = "&deg;F";
                 }
-                for (startTemp = 1; startTemp <= rowCnt ; startTemp++)
+                else if (FahrenheitRadioButton.Checked)
+                {
+                    firstHeaderCell.Text = "&deg;F";
+                    secondHeaderCell.Text = "&deg;C";
+                }
+
+                //Loopar igenom för att se hur många rader och celler som jag behöver
+                for (int temp = startTemp; startTemp <= endTemp ; startTemp += increase)
                 {
                     TableRow tRow = new TableRow();
                     Table1.Rows.Add(tRow);
-                    for (int i = 0; i < 2; i++)
+
+                    TableCell tRowCell = new TableCell();
+                    tRowCell.Text = startTemp.ToString();
+                    tRow.Cells.Add(tRowCell);
+                    
+                    TableCell tCell = new TableCell();
+                    tRow.Cells.Add(tCell);
+                    
+                    if (CelsiusRadioButton.Checked)
                     {
-                        TableCell tCell = new TableCell();
-                        tRow.Cells.Add(tCell);
+                        tCell.Text = TemperatureConverter.CelsiusToFahrenheit(startTemp).ToString();
+                    }
+                    else
+                    {
+                        tCell.Text = TemperatureConverter.FahrenheitToCelsius(startTemp).ToString();
                     }
                 }
                 Table1.Visible = true;

@@ -1,6 +1,29 @@
 ﻿body {
+    width: 800px;
+    margin: 0 auto;
+    border-bottom: 1px solid black;
 }
 
 .error {
     color: red;
+}
+
+.header {
+    border-bottom: 3px solid black;    
+}
+
+#tableHeader {
+    background: black;
+    color: white;
+}
+
+#Table1 {
+    border-collapse: collapse;
+    width: 200px;
+    border: 1px solid black;
+}
+
+td {
+    text-align: center;
+    padding: 5px;
 }

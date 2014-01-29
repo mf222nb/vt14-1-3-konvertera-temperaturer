@@ -8,7 +8,7 @@
     <link href="~/Content/style.css" rel="stylesheet" />
 </head>
 <body>
-    <header>
+    <header class="header">
         <h1>Konvertera temperaturer</h1>
     </header>
     <form id="form1" runat="server">
@@ -48,9 +48,9 @@
         <asp:Button ID="SubmitButton" runat="server" Text="Konvertera" OnClick="SubmitButton_Click"/>
     </div>
         <asp:Table ID="Table1" runat="server" Visible="false">
-            <asp:TableHeaderRow>
-                <asp:TableHeaderCell></asp:TableHeaderCell>
-                <asp:TableHeaderCell></asp:TableHeaderCell>
+            <asp:TableHeaderRow ID="tableHeader">
+                <asp:TableHeaderCell ID="firstHeaderCell"></asp:TableHeaderCell>
+                <asp:TableHeaderCell ID="secondHeaderCell"></asp:TableHeaderCell>
             </asp:TableHeaderRow>
         </asp:Table>
     </form>
