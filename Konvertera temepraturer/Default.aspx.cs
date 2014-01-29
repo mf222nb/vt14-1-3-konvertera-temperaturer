@@ -18,6 +18,31 @@ namespace Konvertera_temepraturer
         {
             if (IsValid)
             {
+                //Starttemperaturens värde
+                var startTemp = int.Parse(StarttempBox.Text);
+
+                //Sluttemperaturens värde
+                var endTemp = int.Parse(EndtempBox.Text);
+
+                //Temperaturstegningens värde
+                var increase = int.Parse(TempincreaseBox.Text);
+
+                var rowCnt = endTemp / increase;
+
+                if (CelsiusRadioButton.Checked)
+                {
+                    
+                }
+                for (startTemp = 1; startTemp <= rowCnt ; startTemp++)
+                {
+                    TableRow tRow = new TableRow();
+                    Table1.Rows.Add(tRow);
+                    for (int i = 0; i < 2; i++)
+                    {
+                        TableCell tCell = new TableCell();
+                        tRow.Cells.Add(tCell);
+                    }
+                }
                 Table1.Visible = true;
             }
         }
